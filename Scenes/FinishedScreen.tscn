@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://pfl35d0nq5vy"]
+
+[ext_resource type="Theme" uid="uid://b77ydw8aubjqj" path="res://Themes/DarkTheme.tres" id="1_73nrn"]
+[ext_resource type="Script" path="res://Scripts/FinishedScreen.cs" id="2_uvoce"]
+[ext_resource type="PackedScene" uid="uid://dg41rwa5my75d" path="res://Scenes/FinishedImageButton.tscn" id="3_hr3a0"]
+
+[node name="FinishedScreen" type="Control" node_paths=PackedStringArray("_imagesGridContainer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_73nrn")
+script = ExtResource("2_uvoce")
+_imagesGridContainer = NodePath("VBoxContainer/ScrollContainer/ImagesGridContainer")
+_finishedImageButtonPackedScene = ExtResource("3_hr3a0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SessionFinished!" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Session Finished!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DownloadImagesButton" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+text = "download images"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ImagesGridContainer" type="GridContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 5
+
+[node name="HomeButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "back to main screen"
+
+[connection signal="pressed" from="VBoxContainer/HomeButton" to="." method="OnHomeButtonPressed"]

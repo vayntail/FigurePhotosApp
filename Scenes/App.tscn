@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://hauemq4yaojx"]
+
+[ext_resource type="PackedScene" uid="uid://cb7ns6e41wvag" path="res://Scenes/SetupScreen.tscn" id="1_ed346"]
+[ext_resource type="Theme" uid="uid://b77ydw8aubjqj" path="res://Themes/DarkTheme.tres" id="1_xshxk"]
+
+[node name="App" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xshxk")
+
+[node name="SetupScreen" parent="." instance=ExtResource("1_ed346")]
+layout_mode = 1

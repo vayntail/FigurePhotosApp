@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://b77ydw8aubjqj"]
+
+[ext_resource type="StyleBox" uid="uid://ceeokq48xf4v1" path="res://Themes/InSessionProgressBarStyleBox.tres" id="1_y7g4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ero78"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awcbg"]
+bg_color = Color(0.054902, 0.054902, 0.054902, 1)
+
+[sub_resource type="ImageTexture" id="ImageTexture_yppy8"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_qqh3x"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_nv5cs"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_pw0nr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5dflf"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[resource]
+Button/constants/icon_max_width = 20
+Button/styles/focus = SubResource("StyleBoxEmpty_ero78")
+Panel/styles/panel = SubResource("StyleBoxFlat_awcbg")
+PopupMenu/constants/item_start_padding = -16
+PopupMenu/icons/radio_checked = SubResource("ImageTexture_yppy8")
+PopupMenu/icons/radio_checked_disabled = SubResource("ImageTexture_qqh3x")
+PopupMenu/icons/radio_unchecked = SubResource("ImageTexture_nv5cs")
+PopupMenu/icons/radio_unchecked_disabled = SubResource("ImageTexture_pw0nr")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_5dflf")
+ProgressBar/styles/fill = ExtResource("1_y7g4d")

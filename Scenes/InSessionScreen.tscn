@@ -1,0 +1,501 @@
+[gd_scene load_steps=20 format=3 uid="uid://bsab0eb8h6rbl"]
+
+[ext_resource type="Theme" uid="uid://b77ydw8aubjqj" path="res://Themes/DarkTheme.tres" id="1_4ui88"]
+[ext_resource type="Script" path="res://Scripts/InSessionScreen.cs" id="2_yi0mn"]
+[ext_resource type="StyleBox" uid="uid://ceeokq48xf4v1" path="res://Themes/InSessionProgressBarStyleBox.tres" id="3_teph8"]
+[ext_resource type="Texture2D" uid="uid://c2xmsg8skoodc" path="res://Icons/ic_fluent_full_screen_maximize_24_filled(1).png" id="3_vrpr0"]
+[ext_resource type="Texture2D" uid="uid://cqepcq6db7af5" path="res://Icons/ic_fluent_full_screen_minimize_24_filled.png" id="4_7n5xm"]
+[ext_resource type="Script" path="res://Scripts/InSessionScreenUI.cs" id="4_dnbm5"]
+[ext_resource type="PackedScene" uid="uid://dah1b0irq386k" path="res://Scenes/ConfirmationOverlay.tscn" id="4_tfv6y"]
+[ext_resource type="Texture2D" uid="uid://b5s1qabduamj2" path="res://Icons/ic_fluent_dismiss_24_filled(2).png" id="5_a1pxy"]
+[ext_resource type="Texture2D" uid="uid://crv0t50tkrtdl" path="res://icon.svg" id="5_q13w3"]
+[ext_resource type="Texture2D" uid="uid://blloj1d1d27un" path="res://Icons/ic_fluent_pause_24_filled.png" id="6_bvq2o"]
+[ext_resource type="Texture2D" uid="uid://cip4yvknpmqin" path="res://Assets/Gradient.png" id="6_r1bl0"]
+[ext_resource type="Texture2D" uid="uid://b0gowurxscedy" path="res://Icons/ic_fluent_play_24_filled.png" id="7_1ogy1"]
+[ext_resource type="Texture2D" uid="uid://b1n2x48fpitpi" path="res://Icons/ic_fluent_arrow_reset_24_filled.png" id="7_2gfms"]
+
+[sub_resource type="Animation" id="Animation_rhd11"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ExitButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/FullScreenButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/HBoxContainer/PausePlayButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/HBoxContainer/RestartButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/BottomGradient:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../VBoxContainer2/TopBar/TimerProgressBar:theme:ProgressBar/styles/fill:bg_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.494118, 0.494118, 0.494118, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qpoyq"]
+resource_name = "TimerBarColorSwapToOrange"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../VBoxContainer2/TopBar/TimerProgressBar:theme:ProgressBar/styles/fill:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.372549, 0.372549, 0.372549, 1), Color(0.6, 0.270588, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7wr2b"]
+resource_name = "TimerBarColorSwapToRed"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../VBoxContainer2/TopBar/TimerProgressBar:theme:ProgressBar/styles/fill:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.6, 0.270588, 0, 1), Color(0.541176, 0, 0.0196078, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_76gde"]
+resource_name = "UIFadeIn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ExitButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/FullScreenButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/HBoxContainer/PausePlayButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/HBoxContainer/RestartButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/BottomGradient:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.568627)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tbhx8"]
+resource_name = "UIFadeOut"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ExitButton:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/FullScreenButton:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/HBoxContainer/PausePlayButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/HBoxContainer/RestartButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/BottomGradient:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tnimu"]
+_data = {
+"RESET": SubResource("Animation_rhd11"),
+"TimerBarColorSwapToOrange": SubResource("Animation_qpoyq"),
+"TimerBarColorSwapToRed": SubResource("Animation_7wr2b"),
+"UIFadeIn": SubResource("Animation_76gde"),
+"UIFadeOut": SubResource("Animation_tbhx8")
+}
+
+[node name="InSessionScreen" type="Control" node_paths=PackedStringArray("_imageTextureRect", "_timerLabel", "_timer", "_timerProgressBar", "_uiAnimationPlayer", "_fullScreenButton", "_pauseButton")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4ui88")
+script = ExtResource("2_yi0mn")
+_imageTextureRect = NodePath("VBoxContainer2/Control/VBoxContainer/ImageTextureRect")
+_timerLabel = NodePath("VBoxContainer2/TopBar/TimerLabel")
+_timer = NodePath("Timer")
+_timerProgressBar = NodePath("VBoxContainer2/TopBar/TimerProgressBar")
+_timerBarStyleBox = ExtResource("3_teph8")
+_uiAnimationPlayer = NodePath("UIButtonsControl/UIAnimationPlayer")
+_fullScreenButton = NodePath("UIButtonsControl/UIButtonsLayer/Control/FullScreenButton")
+_pauseButton = NodePath("UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/PausePlayButton")
+_confirmationOverlayPackedScene = ExtResource("4_tfv6y")
+
+[node name="InSessionScreenUI" type="Control" parent="." node_paths=PackedStringArray("_UIButtonsLayer", "_exitButton", "_fullScreenButton", "_pausePlayButton", "_restartButton", "_uiAnimationPlayer")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_dnbm5")
+_UIButtonsLayer = NodePath("../UIButtonsControl/UIButtonsLayer")
+_exitButton = NodePath("../UIButtonsControl/UIButtonsLayer/Control/ExitButton")
+_fullScreenButton = NodePath("../UIButtonsControl/UIButtonsLayer/Control/FullScreenButton")
+_pausePlayButton = NodePath("../UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/PausePlayButton")
+_restartButton = NodePath("../UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/RestartButton")
+_uiAnimationPlayer = NodePath("../UIButtonsControl/UIAnimationPlayer")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="Control" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="TimerProgressBar" type="ProgressBar" parent="VBoxContainer2/TopBar"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4ui88")
+value = 18.92
+show_percentage = false
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer2/TopBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -5.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 15
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageTextureRect" type="TextureRect" parent="VBoxContainer2/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_q13w3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UIButtonsControl" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UITimer" type="Timer" parent="UIButtonsControl"]
+
+[node name="UIAnimationPlayer" type="AnimationPlayer" parent="UIButtonsControl"]
+root_node = NodePath("../UIButtonsLayer")
+libraries = {
+"": SubResource("AnimationLibrary_tnimu")
+}
+
+[node name="UIButtonsLayer" type="CanvasLayer" parent="UIButtonsControl"]
+
+[node name="Control" type="Control" parent="UIButtonsControl/UIButtonsLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BottomGradient" type="TextureRect" parent="UIButtonsControl/UIButtonsLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_r1bl0")
+
+[node name="ExitButton" type="TextureButton" parent="UIButtonsControl/UIButtonsLayer/Control"]
+layout_mode = 1
+offset_right = 30.0
+offset_bottom = 30.0
+texture_normal = ExtResource("5_a1pxy")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="FullScreenButton" type="TextureButton" parent="UIButtonsControl/UIButtonsLayer/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_bottom = 30.0
+grow_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource("3_vrpr0")
+texture_pressed = ExtResource("4_7n5xm")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIButtonsControl/UIButtonsLayer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+alignment = 1
+
+[node name="PausePlayButton" type="TextureButton" parent="UIButtonsControl/UIButtonsLayer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("6_bvq2o")
+texture_pressed = ExtResource("7_1ogy1")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="RestartButton" type="TextureButton" parent="UIButtonsControl/UIButtonsLayer/Control/HBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_2gfms")
+ignore_texture_size = true
+stretch_mode = 5
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeOut"]
+[connection signal="mouse_entered" from="UIButtonsControl" to="InSessionScreenUI" method="OnUIButtonsControlMouseEntered"]
+[connection signal="mouse_exited" from="UIButtonsControl" to="InSessionScreenUI" method="OnUIButtonsControlMouseExited"]
+[connection signal="mouse_entered" from="UIButtonsControl/UIButtonsLayer/Control/ExitButton" to="InSessionScreenUI" method="OnExitButtonMouseEntered"]
+[connection signal="mouse_exited" from="UIButtonsControl/UIButtonsLayer/Control/ExitButton" to="InSessionScreenUI" method="OnExitButtonMouseExited"]
+[connection signal="pressed" from="UIButtonsControl/UIButtonsLayer/Control/ExitButton" to="." method="OnExitButtonPressed"]
+[connection signal="mouse_entered" from="UIButtonsControl/UIButtonsLayer/Control/FullScreenButton" to="InSessionScreenUI" method="OnFullScreenButtonMouseEntered"]
+[connection signal="mouse_exited" from="UIButtonsControl/UIButtonsLayer/Control/FullScreenButton" to="InSessionScreenUI" method="OnFullScreenButtonMouseExited"]
+[connection signal="toggled" from="UIButtonsControl/UIButtonsLayer/Control/FullScreenButton" to="." method="OnFullScreenButtonToggled"]
+[connection signal="mouse_entered" from="UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/PausePlayButton" to="InSessionScreenUI" method="OnPausePlayButtonMouseEntered"]
+[connection signal="mouse_exited" from="UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/PausePlayButton" to="InSessionScreenUI" method="OnPausePlayButtonMouseExited"]
+[connection signal="toggled" from="UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/PausePlayButton" to="." method="OnPausePlayButtonToggled"]
+[connection signal="mouse_entered" from="UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/RestartButton" to="InSessionScreenUI" method="OnRestartButtonMouseEntered"]
+[connection signal="mouse_exited" from="UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/RestartButton" to="InSessionScreenUI" method="OnRestartButtonMouseExited"]
+[connection signal="pressed" from="UIButtonsControl/UIButtonsLayer/Control/HBoxContainer/RestartButton" to="." method="OnRestartButtonPressed"]

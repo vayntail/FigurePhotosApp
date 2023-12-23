@@ -1,0 +1,34 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Figure Photos App"
+run/main_scene="res://Scenes/App.tscn"
+config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Scripts/Global.cs"
+UserDataManager="*res://Scripts/UserDataManager.cs"
+
+[display]
+
+window/size/viewport_width=755
+window/size/viewport_height=618
+
+[dotnet]
+
+project/assembly_name="Figure Photos App"
+
+[rendering]
+
+viewport/transparent_background=true

@@ -1,0 +1,191 @@
+[gd_scene load_steps=5 format=3 uid="uid://csya5cheol3ve"]
+
+[ext_resource type="Script" path="res://Scripts/SetupScreenMain.cs" id="1_354n4"]
+[ext_resource type="PackedScene" uid="uid://dah1b0irq386k" path="res://Scenes/ConfirmationOverlay.tscn" id="2_1wq7c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q8bi8"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.34902, 0.341176, 0.85098, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8yhr"]
+bg_color = Color(0.568627, 0.596078, 0.94902, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="SetupScreenMain" type="Control" node_paths=PackedStringArray("_imagesFolderPathButton", "_timerIntervalOptionButton", "_totalSlider", "_totalImagesLabel", "_totalTimeLabel", "_fullscreenCheckBox", "_folderDialog")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_354n4")
+_imagesFolderPathButton = NodePath("VBoxContainer/FolderContainer/ImagesFolderPathButton")
+_timerIntervalOptionButton = NodePath("VBoxContainer/TimerContainer/TimerOptionButton")
+_totalSlider = NodePath("VBoxContainer/TotalContainer/TotalSlider")
+_totalImagesLabel = NodePath("VBoxContainer/TotalContainer/TotalImagesLabel")
+_totalTimeLabel = NodePath("VBoxContainer/TotalContainer/TotalTimeLabel")
+_fullscreenCheckBox = NodePath("VBoxContainer/FullscreenCheckBox")
+_folderDialog = NodePath("FolderDialog")
+_confirmationOverlayPackedScene = ExtResource("2_1wq7c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.5
+offset_top = -309.0
+offset_right = 187.5
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="FolderContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/FolderContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.607843, 0.607843, 1)
+theme_override_font_sizes/font_size = 15
+text = "images folder"
+horizontal_alignment = 1
+
+[node name="ImagesFolderPathButton" type="Button" parent="VBoxContainer/FolderContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "-"
+
+[node name="Label4" type="Label" parent="VBoxContainer/FolderContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.607843, 0.607843, 0.607843, 1)
+theme_override_font_sizes/font_size = 13
+text = "found 100 images!"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="TimerContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/TimerContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.607843, 0.607843, 1)
+theme_override_font_sizes/font_size = 15
+text = "timer"
+horizontal_alignment = 1
+
+[node name="TimerOptionButton" type="OptionButton" parent="VBoxContainer/TimerContainer"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+disabled = true
+item_count = 5
+selected = 0
+popup/item_0/text = "15 sec"
+popup/item_0/id = 15
+popup/item_1/text = "30 sec"
+popup/item_1/id = 30
+popup/item_2/text = "60 sec"
+popup/item_2/id = 60
+popup/item_3/text = "180 sec"
+popup/item_3/id = 180
+popup/item_4/text = "300 sec"
+popup/item_4/id = 300
+
+[node name="Spacer2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="TotalContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/TotalContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.607843, 0.607843, 1)
+theme_override_font_sizes/font_size = 15
+text = "total"
+horizontal_alignment = 1
+
+[node name="TotalSlider" type="HSlider" parent="VBoxContainer/TotalContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+mouse_default_cursor_shape = 2
+min_value = 1.0
+max_value = 1.0
+value = 1.0
+rounded = true
+editable = false
+scrollable = false
+
+[node name="TotalImagesLabel" type="Label" parent="VBoxContainer/TotalContainer"]
+layout_mode = 2
+text = "- images"
+horizontal_alignment = 1
+
+[node name="TotalTimeLabel" type="Label" parent="VBoxContainer/TotalContainer"]
+layout_mode = 2
+text = "-s"
+horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+mouse_default_cursor_shape = 2
+text = "fullscreen
+"
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/h_separation = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_q8bi8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p8yhr")
+text = "start!"
+
+[node name="FolderDialog" type="FileDialog" parent="."]
+title = "Open a Directory"
+initial_position = 2
+ok_button_text = "Select Current Folder"
+file_mode = 2
+access = 2
+use_native_dialog = true
+
+[connection signal="pressed" from="VBoxContainer/FolderContainer/ImagesFolderPathButton" to="." method="OnImagesFolderPathButtonPressed"]
+[connection signal="item_selected" from="VBoxContainer/TimerContainer/TimerOptionButton" to="." method="OnTimerOptionButtonItemSelected"]
+[connection signal="value_changed" from="VBoxContainer/TotalContainer/TotalSlider" to="." method="OnTotalSliderValueChanged"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="dir_selected" from="FolderDialog" to="." method="OnFolderDialogPathSelected"]

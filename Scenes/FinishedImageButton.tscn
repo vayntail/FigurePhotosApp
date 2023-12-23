@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg41rwa5my75d"]
+
+[ext_resource type="Texture2D" uid="uid://crq68wq7ojy5r" path="res://TestFolder/3bf304a1569e5c558f9a530c15cdf382.jpg" id="1_0v6rq"]
+[ext_resource type="Script" path="res://Scripts/FinishedImageButton.cs" id="2_gpxtm"]
+
+[node name="FinishedImageButton" type="TextureButton"]
+custom_minimum_size = Vector2(0, 120)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.000678612
+size_flags_horizontal = 3
+texture_normal = ExtResource("1_0v6rq")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_gpxtm")
